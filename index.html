@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richmond Dental Care — Sheffield S13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#1C1C1C;background:#fff;overflow-x:hidden;font-size:16px;line-height:1.6}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:#A07830;z-index:999;transform-origin:left;transform:scaleX(0)}
+
+/* ─── NAV ─── */
+.site-nav{
+  position:sticky;top:0;z-index:500;
+  background:#fff;
+  border-bottom:1px solid #e8e4de;
+  padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+  transition:box-shadow .3s;
+}
+.site-nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.06)}
+
+.nav-logo{text-decoration:none}
+.nav-logo-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:700;
+  color:#1C1C1C;letter-spacing:.01em;
+  display:block;line-height:1.2
+}
+.nav-logo-sub{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#999;display:block}
+
+.nav-links{list-style:none;display:flex;gap:2rem;align-items:center}
+.nav-links a{
+  font-size:.78rem;font-weight:400;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#666;text-decoration:none;transition:color .2s
+}
+.nav-links a:hover{color:#1C1C1C}
+
+.nav-book{
+  background:#1C1C1C;color:#fff;
+  text-decoration:none;
+  font-size:.75rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.55rem 1.4rem;
+  border-radius:2px;
+  transition:background .2s;
+  white-space:nowrap
+}
+.nav-book:hover{background:#A07830}
+
+/* ─── HERO ─── */
+.hero{
+  background:#14181F;
+  padding:110px 5% 90px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(160,120,48,.12) 0%,transparent 65%);
+  pointer-events:none
+}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.68rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:#A07830;margin-bottom:1.8rem;
+}
+.hero-tag-line{width:30px;height:1px;background:#A07830}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5vw,5rem);
+  font-weight:600;line-height:1.08;
+  letter-spacing:-.02em;
+  color:#fff;
+  max-width:800px;margin:0 auto 1.6rem;
+}
+.hero h1 em{font-style:normal;font-weight:700;color:rgba(255,255,255,.55)}
+
+.hero-sub{
+  font-size:1rem;font-weight:300;
+  color:rgba(255,255,255,.5);
+  line-height:1.85;max-width:560px;
+  margin:0 auto 2.5rem;
+}
+
+.hero-actions{
+  display:flex;align-items:center;justify-content:center;
+  gap:1.2rem;flex-wrap:wrap;
+}
+
+/* Bond-style circle arrow button */
+.circ-btn{
+  display:inline-flex;align-items:center;gap:.8rem;
+  text-decoration:none;font-size:.82rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:gap .25s ease;
+  cursor:pointer;border:none;background:none;font-family:'Inter',sans-serif;
+}
+.circ-btn-icon{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+  transition:transform .25s ease, background .2s;
+}
+.circ-btn:hover{gap:1.3rem}
+.circ-btn:hover .circ-btn-icon{transform:rotate(-45deg)}
+
+.circ-btn.gold{color:#fff}
+.circ-btn.gold .circ-btn-icon{background:#A07830;color:#fff}
+.circ-btn.gold:hover .circ-btn-icon{background:#C09040}
+
+.circ-btn.outline-w{color:rgba(255,255,255,.65)}
+.circ-btn.outline-w .circ-btn-icon{
+  background:transparent;color:#fff;
+  border:1.5px solid rgba(255,255,255,.25)
+}
+.circ-btn.outline-w:hover{color:rgba(255,255,255,.9)}
+.circ-btn.outline-w:hover .circ-btn-icon{border-color:rgba(255,255,255,.6)}
+
+/* Hero bottom credentials row */
+.hero-creds{
+  display:flex;align-items:center;justify-content:center;gap:2rem;
+  flex-wrap:wrap;margin-top:3.5rem;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.08)
+}
+.hero-cred{
+  font-size:.72rem;font-weight:400;letter-spacing:.05em;
+  color:rgba(255,255,255,.35);
+  display:flex;align-items:center;gap:.5rem
+}
+.hero-cred-dot{width:3px;height:3px;border-radius:50%;background:#A07830}
+
+/* ─── SCROLLING BADGE BAR ─── */
+.badge-bar{
+  background:#F5F2EE;
+  border-bottom:1px solid #E8E4DE;
+  padding:.9rem 0;overflow:hidden
+}
+.badge-track{
+  display:flex;animation:scroll 24s linear infinite;
+  white-space:nowrap
+}
+.badge-item{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:0 2.5rem;
+  font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:#888;flex-shrink:0
+}
+.badge-sep{color:#C0A060;font-size:.9rem}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─── SHARED SECTION STYLES ─── */
+.section{padding:90px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+
+.section-label{
+  font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:#A07830;display:flex;align-items:center;gap:.7rem;margin-bottom:1.3rem
+}
+.section-label::before{content:'';width:24px;height:1px;background:#A07830}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,3.2vw,2.9rem);
+  font-weight:600;line-height:1.15;letter-spacing:-.015em;
+  color:#1C1C1C;margin-bottom:1.2rem
+}
+h2 em{font-style:normal;font-weight:700;color:#A07830}
+
+.body-text{font-size:.95rem;font-weight:300;color:#555;line-height:1.95;max-width:540px}
+.body-text + .body-text{margin-top:1rem}
+.body-text strong{color:#1C1C1C;font-weight:500}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ─── WELCOME SECTION ─── */
+.welcome{background:#fff}
+.welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+
+.welcome-text{}
+.welcome-quote{
+  font-family:'Inter',sans-serif;
+  font-size:1rem;font-weight:400;
+  color:#1C1C1C;line-height:1.75;
+  border-left:2px solid #A07830;padding-left:1.2rem;
+  margin:1.8rem 0
+}
+
+/* Bond-style quick-access icon boxes */
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E8E4DE}
+.quick-box{
+  background:#F9F8F5;
+  padding:2rem 1.8rem;
+  transition:background .2s
+}
+.quick-box:hover{background:#fff}
+.qb-icon{
+  width:48px;height:48px;
+  background:#1C1C1C;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.2rem;transition:background .2s
+}
+.quick-box:hover .qb-icon{background:#A07830}
+.qb-title{font-size:.95rem;font-weight:600;color:#1C1C1C;margin-bottom:.5rem}
+.qb-text{font-size:.82rem;font-weight:300;color:#777;line-height:1.65}
+
+/* Stats row */
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:#E8E4DE;
+  margin-top:3.5rem
+}
+.stat-box{
+  background:#F9F8F5;
+  padding:1.6rem 1.5rem;
+  text-align:center
+}
+.stat-box-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:700;
+  color:#A07830;line-height:1;margin-bottom:.3rem
+}
+.stat-box-label{font-size:.75rem;color:#888;font-weight:300;letter-spacing:.04em}
+
+/* ─── TREATMENTS ─── */
+.treatments{background:#F9F8F5}
+.treatments-header{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:3rem;margin-bottom:3rem
+}
+.treatments-intro{font-size:.95rem;font-weight:300;color:#666;line-height:1.85;max-width:380px}
+
+.tx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E8E4DE}
+
+.tx-card{
+  background:#fff;padding:2rem 1.8rem 1.8rem;
+  position:relative;overflow:hidden;
+  transition:background .2s
+}
+.tx-card:hover{background:#F9F8F5}
+
+.tx-num{
+  font-family:'Playfair Display',serif;
+  font-size:.85rem;font-weight:400;color:#CCC;
+  margin-bottom:1.1rem;display:block
+}
+
+.tx-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:600;
+  color:#1C1C1C;margin-bottom:.7rem;line-height:1.2;
+  transition:color .2s
+}
+.tx-card:hover .tx-name{color:#A07830}
+
+.tx-desc{font-size:.83rem;font-weight:300;color:#777;line-height:1.7;margin-bottom:1.2rem}
+
+.tx-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.73rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:#A07830;text-decoration:none;transition:gap .2s
+}
+.tx-card:hover .tx-link{gap:.9rem}
+.tx-link-icon{
+  width:28px;height:28px;border-radius:50%;
+  border:1.5px solid #A07830;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:#A07830;
+  transition:background .2s,color .2s
+}
+.tx-card:hover .tx-link-icon{background:#A07830;color:#fff}
+
+/* ─── LEAD DENTIST ─── */
+.lead-dentist{background:#14181F}
+
+.ld-grid{display:grid;grid-template-columns:auto 1fr;gap:4rem;align-items:start}
+
+.ld-left{}
+.ld-monogram{
+  width:100px;height:100px;
+  background:#A07830;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:#fff;
+  margin-bottom:2rem
+}
+.ld-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:700;
+  color:#fff;line-height:1.2;margin-bottom:.4rem
+}
+.ld-role{
+  font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:#A07830;margin-bottom:.3rem
+}
+.ld-gdc{font-size:.72rem;color:rgba(255,255,255,.28);font-weight:300}
+
+.ld-right{}
+.ld-quote{
+  font-family:'Inter',sans-serif;
+  font-size:1rem;font-weight:300;
+  color:rgba(255,255,255,.7);line-height:1.85;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,.1);
+  margin-bottom:2rem
+}
+.ld-body{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:1.5rem}
+.ld-credentials{display:flex;flex-direction:column;gap:.55rem}
+.ld-cred{
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.82rem;color:rgba(255,255,255,.45);font-weight:300
+}
+.ld-cred::before{
+  content:'';width:4px;height:4px;border-radius:50%;
+  background:#A07830;flex-shrink:0
+}
+
+/* ─── TEAM ─── */
+.team{background:#fff}
+.team-header{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;margin-bottom:2.5rem}
+.team-intro{font-size:.95rem;font-weight:300;color:#666;line-height:1.85;max-width:380px}
+
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E8E4DE}
+.team-card{
+  background:#F9F8F5;padding:1.6rem 1.4rem;
+  transition:background .2s
+}
+.team-card:hover{background:#fff}
+.tc-initials{
+  width:44px;height:44px;
+  background:rgba(160,120,48,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.62rem;font-weight:600;color:#A07830;
+  letter-spacing:.04em;margin-bottom:.9rem
+}
+.tc-name{font-size:.9rem;font-weight:600;color:#1C1C1C;margin-bottom:.2rem;line-height:1.3}
+.tc-role{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#A07830;margin-bottom:.2rem}
+.tc-gdc{font-size:.67rem;color:#aaa;font-weight:300}
+
+.support-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:#E8E4DE;margin-top:1px
+}
+.ss-item{
+  background:#FAFAF8;padding:1.1rem 1.4rem
+}
+.ss-role{font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#A07830;margin-bottom:.25rem}
+.ss-name{font-size:.85rem;font-weight:500;color:#1C1C1C;margin-bottom:.1rem}
+.ss-gdc{font-size:.66rem;color:#bbb;font-weight:300}
+
+/* ─── FEES ─── */
+.fees{background:#F9F8F5}
+.fees-header{display:flex;align-items:flex-end;justify-content:space-between;gap:3rem;margin-bottom:2.5rem}
+.fees-intro{font-size:.95rem;font-weight:300;color:#666;line-height:1.85;max-width:400px}
+
+.fees-cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E8E4DE}
+.fees-col{background:#fff;padding:2.5rem 2.2rem}
+
+.fees-col-title{
+  font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:#A07830;padding-bottom:.9rem;border-bottom:1px solid #A07830;margin-bottom:0
+}
+
+.fee-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:1rem 0;border-bottom:1px solid #EDEBE7;gap:1rem
+}
+.fee-row:last-of-type{border-bottom:none}
+
+.fee-left{}
+.fee-name{font-size:.9rem;font-weight:400;color:#1C1C1C;margin-bottom:.15rem}
+.fee-desc{font-size:.76rem;font-weight:300;color:#999;line-height:1.5}
+.fee-price{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;
+  color:#1C1C1C;white-space:nowrap;flex-shrink:0
+}
+.fee-price.gold{color:#A07830}
+.fee-note{
+  font-size:.78rem;color:#aaa;font-weight:300;
+  line-height:1.7;margin-top:1.2rem
+}
+
+/* ─── TESTIMONIAL ─── */
+.testi{background:#1C1C1C;padding:80px 5%}
+.testi-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:6rem;align-items:center}
+.testi-quote{
+  font-family:'Inter',sans-serif;
+  font-size:clamp(1rem,1.5vw,1.2rem);
+  font-weight:300;
+  color:rgba(255,255,255,.75);line-height:1.85;
+  padding-left:1.5rem;border-left:2px solid #A07830
+}
+.testi-author{margin-top:1.2rem;font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A07830}
+.testi-stats{display:flex;flex-direction:column;gap:1.5rem;flex-shrink:0}
+.ts{text-align:right}
+.ts-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#fff;line-height:1}
+.ts-label{font-size:.7rem;color:rgba(255,255,255,.35);margin-top:.2rem;letter-spacing:.04em}
+.ts-div{width:40px;height:1px;background:rgba(255,255,255,.1);margin:0 0 0 auto}
+
+/* ─── CONTACT ─── */
+.contact{background:#fff}
+.contact-header{margin-bottom:3rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+
+/* Form — floating label style */
+.form-group{
+  border-bottom:1px solid #E0DDD8;padding:.75rem 0;
+  transition:border-color .2s
+}
+.form-group:focus-within{border-color:#A07830}
+.form-group:first-of-type{border-top:1px solid #E0DDD8}
+.form-row{display:grid;grid-template-columns:1fr 1fr}
+.form-row .form-group:first-child{border-right:1px solid #E0DDD8;padding-right:1.2rem}
+.form-row .form-group:last-child{padding-left:1.2rem;border-top:1px solid #E0DDD8}
+
+.form-label{font-size:.63rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#aaa;display:block;margin-bottom:.3rem}
+.form-input{
+  width:100%;background:transparent;border:none;outline:none;
+  font-family:'Inter',sans-serif;font-size:.92rem;font-weight:300;color:#1C1C1C;
+  padding:.2rem 0
+}
+.form-input::placeholder{color:#D0CDC8}
+textarea.form-input{resize:none;min-height:70px}
+
+.form-submit-wrap{margin-top:2rem}
+
+.circ-btn.dark{color:#1C1C1C}
+.circ-btn.dark .circ-btn-icon{background:#1C1C1C;color:#fff}
+.circ-btn.dark:hover .circ-btn-icon{background:#A07830}
+
+/* Contact info */
+.cinfo-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:600;color:#1C1C1C;
+  margin-bottom:2rem;line-height:1.25
+}
+.cinfo-row{padding:1rem 0;border-bottom:1px solid #EDEBE7}
+.cinfo-row:first-of-type{border-top:1px solid #EDEBE7}
+.cinfo-label{font-size:.63rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#aaa;margin-bottom:.3rem}
+.cinfo-val{font-size:.92rem;font-weight:300;color:#1C1C1C}
+.cinfo-val a{color:#1C1C1C;text-decoration:none;border-bottom:1px solid #E0DDD8;transition:border-color .2s,color .2s}
+.cinfo-val a:hover{color:#A07830;border-color:#A07830}
+
+.emerg-block{
+  margin-top:2rem;padding:1.5rem;
+  border-top:2px solid #A07830;background:#F9F8F5
+}
+.emerg-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#1C1C1C;margin-bottom:.5rem}
+.emerg-text{font-size:.82rem;font-weight:300;color:#777;line-height:1.75}
+.emerg-text strong{color:#1C1C1C;font-weight:500}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#14181F;padding:2rem 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  border-top:1px solid rgba(255,255,255,.05)
+}
+.footer-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:rgba(255,255,255,.35)
+}
+footer p{font-size:.7rem;color:rgba(255,255,255,.18);text-align:center}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.7rem;color:rgba(255,255,255,.22);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-concept{width:100%;text-align:center;font-size:.6rem;color:rgba(255,255,255,.1)}
+.footer-concept a{color:rgba(255,255,255,.18);text-decoration:none}
+
+/* HOURS */
+.hours-title{font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#A07830;margin-bottom:.8rem;margin-top:2rem}
+.hours-row{display:flex;justify-content:space-between;font-size:.85rem;padding:.55rem 0;border-bottom:1px solid #EDEBE7}
+.hours-row:last-child{border-bottom:none}
+.hours-day{font-weight:400;color:#1C1C1C}
+.hours-time{color:#999;font-weight:300}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .nav-links li:not(:last-child){display:none}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .support-strip{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .welcome-grid{grid-template-columns:1fr;gap:3rem}
+  .treatments-header{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .tx-grid{grid-template-columns:1fr 1fr}
+  .ld-grid{grid-template-columns:1fr;gap:2.5rem}
+  .team-header{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .fees-header{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .fees-cols{grid-template-columns:1fr}
+  .testi-inner{grid-template-columns:1fr}
+  .testi-stats{flex-direction:row;flex-wrap:wrap}
+  .ts{text-align:left}
+  .ts-div{margin:0 auto 0 0}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  footer{flex-direction:column;align-items:flex-start}
+  .site-nav{padding:0 4%}
+}
+@media(max-width:600px){
+  .section{padding:65px 4%}
+  .hero{padding:80px 4% 70px}
+  .tx-grid{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .support-strip{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .form-row .form-group:first-child{border-right:none;padding-right:0}
+  .form-row .form-group:last-child{padding-left:0}
+  footer{padding:1.5rem 4%}
+  .testi{padding:60px 4%}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav class="site-nav" id="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-name">Richmond Dental Care</span>
+    <span class="nav-logo-sub">Sheffield S13 · Est. 1960s</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#welcome">About</a></li>
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-book">Book appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">
+    <div class="hero-tag-line"></div>
+    NHS & Private · Sheffield S13
+  </div>
+  <h1>Sheffield's dental practice.<br><em>Since the 1960s.</em></h1>
+  <p class="hero-sub">Eight dentists across six surgeries, offering NHS and private dental care for the whole family. BDA Good Practice members for over a decade.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="circ-btn gold">
+      <span class="circ-btn-icon">→</span>
+      Book an appointment
+    </a>
+    <a href="#treatments" class="circ-btn outline-w">
+      <span class="circ-btn-icon">↓</span>
+      View treatments
+    </a>
+  </div>
+  <div class="hero-creds">
+    <span class="hero-cred"><span class="hero-cred-dot"></span>GDC Registered</span>
+    <span class="hero-cred"><span class="hero-cred-dot"></span>CQC Regulated</span>
+    <span class="hero-cred"><span class="hero-cred-dot"></span>BDA Good Practice 10+ Years</span>
+    <span class="hero-cred"><span class="hero-cred-dot"></span>NHS Foundation Training</span>
+    <span class="hero-cred"><span class="hero-cred-dot"></span>6 Surgeries · 8 Dentists</span>
+  </div>
+</section>
+
+<!-- BADGE BAR -->
+<div class="badge-bar">
+  <div class="badge-track">
+    <span class="badge-item">GDC Registered <span class="badge-sep">·</span></span>
+    <span class="badge-item">CQC Regulated <span class="badge-sep">·</span></span>
+    <span class="badge-item">BDA Good Practice — 10+ Years <span class="badge-sep">·</span></span>
+    <span class="badge-item">NHS Foundation Training Practice <span class="badge-sep">·</span></span>
+    <span class="badge-item">Smilelign Clear Aligners <span class="badge-sep">·</span></span>
+    <span class="badge-item">Air Polishing Available <span class="badge-sep">·</span></span>
+    <span class="badge-item">60+ Years Sheffield <span class="badge-sep">·</span></span>
+    <span class="badge-item">New Patients Welcome <span class="badge-sep">·</span></span>
+    <span class="badge-item">GDC Registered <span class="badge-sep">·</span></span>
+    <span class="badge-item">CQC Regulated <span class="badge-sep">·</span></span>
+    <span class="badge-item">BDA Good Practice — 10+ Years <span class="badge-sep">·</span></span>
+    <span class="badge-item">NHS Foundation Training Practice <span class="badge-sep">·</span></span>
+    <span class="badge-item">Smilelign Clear Aligners <span class="badge-sep">·</span></span>
+    <span class="badge-item">Air Polishing Available <span class="badge-sep">·</span></span>
+    <span class="badge-item">60+ Years Sheffield <span class="badge-sep">·</span></span>
+    <span class="badge-item">New Patients Welcome <span class="badge-sep">·</span></span>
+  </div>
+</div>
+
+<!-- WELCOME / ABOUT -->
+<section class="welcome section" id="welcome">
+  <div class="section-inner">
+    <div class="welcome-grid">
+
+      <div class="rv">
+        <div class="section-label">About the practice</div>
+        <h2>Providing expert dental care<br>to <em>Sheffield since the 1960s.</em></h2>
+        <p class="body-text">Richmond Dental Care has been part of Sheffield S13 for over sixty years. What began as a single surgery has grown into one of the area's most established practices — <strong>six surgeries, eight dentists</strong>, and a support team of over twenty.</p>
+        <div class="welcome-quote">"Trusted by the same Sheffield families across multiple generations."</div>
+        <p class="body-text">Both NHS and private care are available under one roof. Two of our senior dentists are <strong>NHS Foundation Trainers</strong> — a status the NHS grants only to practices that meet the highest clinical standards. BDA Good Practice membership has been held and independently assessed for over ten consecutive years.</p>
+
+        <div class="hours-title">Opening Hours</div>
+        <div class="hours-row"><span class="hours-day">Monday – Thursday</span><span class="hours-time">8:30am – 5:15pm</span></div>
+        <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">8:30am – 5:00pm</span></div>
+        <div class="hours-row"><span class="hours-day">Weekend</span><span class="hours-time">Closed</span></div>
+      </div>
+
+      <div class="rv d2">
+        <div class="quick-grid">
+          <div class="quick-box">
+            <div class="qb-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div class="qb-title">NHS & Private Treatments</div>
+            <div class="qb-text">Full range of general, restorative, and cosmetic dentistry — both NHS and private available.</div>
+          </div>
+          <div class="quick-box">
+            <div class="qb-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="qb-title">Book an Appointment</div>
+            <div class="qb-text">Call 0114 239 9296 or fill in our contact form to arrange a convenient time.</div>
+          </div>
+          <div class="quick-box">
+            <div class="qb-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="qb-title">Patient Testimonials</div>
+            <div class="qb-text">Trusted by Sheffield families for generations — hear directly from our long-standing patients.</div>
+          </div>
+          <div class="quick-box">
+            <div class="qb-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 19 19.5 19.5 0 013.08 12 19.79 19.79 0 011 4.18 2 2 0 013 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="qb-title">Get in Touch</div>
+            <div class="qb-text">Our friendly team is happy to answer questions about treatments, pricing, or appointments.</div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-num">60+</div><div class="stat-box-label">Years in Sheffield</div></div>
+          <div class="stat-box"><div class="stat-box-num">8</div><div class="stat-box-label">Qualified dentists</div></div>
+          <div class="stat-box"><div class="stat-box-num">10+</div><div class="stat-box-label">Years BDA accredited</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments section" id="treatments">
+  <div class="section-inner">
+    <div class="treatments-header rv">
+      <div>
+        <div class="section-label">Treatments</div>
+        <h2>Comprehensive dental care<br>for <em>the whole family.</em></h2>
+      </div>
+      <p class="treatments-intro">NHS and private treatments available for all ages — everything under one roof, without the need for referral to another clinic.</p>
+    </div>
+    <div class="tx-grid rv">
+      <div class="tx-card">
+        <span class="tx-num">01</span>
+        <div class="tx-name">NHS Treatment</div>
+        <p class="tx-desc">Examinations, fillings, extractions, and hygiene for registered patients at fixed national charge bands. Band 1 from £27.90. Children under 18 free.</p>
+        <a href="#fees" class="tx-link"><span class="tx-link-icon">→</span> View fees</a>
+      </div>
+      <div class="tx-card">
+        <span class="tx-num">02</span>
+        <div class="tx-name">Teeth Whitening</div>
+        <p class="tx-desc">Professional take-home whitening trays made to fit your teeth precisely. Results that over-the-counter products cannot match — visible within two weeks.</p>
+        <a href="#contact" class="tx-link"><span class="tx-link-icon">→</span> Enquire</a>
+      </div>
+      <div class="tx-card">
+        <span class="tx-num">03</span>
+        <div class="tx-name">Smilelign Clear Aligners</div>
+        <p class="tx-desc">Discreet clear orthodontic aligners without fixed braces. Fully planned and managed in-house by our accredited Smilelign providers.</p>
+        <a href="#contact" class="tx-link"><span class="tx-link-icon">→</span> Enquire</a>
+      </div>
+      <div class="tx-card">
+        <span class="tx-num">04</span>
+        <div class="tx-name">Air Polishing</div>
+        <p class="tx-desc">The modern standard for professional cleaning — removes stains and plaque without traditional scraping. Comfortable for all patients.</p>
+        <a href="#contact" class="tx-link"><span class="tx-link-icon">→</span> Enquire</a>
+      </div>
+      <div class="tx-card">
+        <span class="tx-num">05</span>
+        <div class="tx-name">Restorative Dentistry</div>
+        <p class="tx-desc">Crowns, bridges, dentures, and root canal treatment to restore damaged or missing teeth — to NHS or private standard depending on your needs.</p>
+        <a href="#fees" class="tx-link"><span class="tx-link-icon">→</span> View fees</a>
+      </div>
+      <div class="tx-card">
+        <span class="tx-num">06</span>
+        <div class="tx-name">Emergency Appointments</div>
+        <p class="tx-desc">Same-day slots for registered patients in pain. Call 0114 239 9296 first thing in the morning for the best chance of being seen that day.</p>
+        <a href="#contact" class="tx-link"><span class="tx-link-icon">→</span> Call now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD DENTIST -->
+<section class="lead-dentist section" id="about">
+  <div class="section-inner">
+    <div class="ld-grid rv">
+      <div class="ld-left">
+        <div class="ld-monogram">YL</div>
+        <div class="ld-name">Yusuf Lone<br>BDS MFGDP (UK)</div>
+        <div class="ld-role">Lead Dentist & Foundation Trainer</div>
+        <div class="ld-gdc">GDC: 77774 · Sheffield, 2000</div>
+      </div>
+      <div class="ld-right">
+        <div class="ld-quote">"Making sure every patient is looked after with care and consistency — from the first welcome to the final result."</div>
+        <p class="ld-body">The most senior clinician at Richmond and an NHS Foundation Trainer — a status the NHS grants only to practices it trusts to develop newly qualified dentists. His clinical leadership sets the standard for the entire team and every patient the practice sees.</p>
+        <div class="ld-credentials">
+          <div class="ld-cred">BDS — University of Sheffield, 2000</div>
+          <div class="ld-cred">MFGDP (UK) — Faculty of General Dental Practice</div>
+          <div class="ld-cred">NHS Foundation Trainer — developing the next generation</div>
+          <div class="ld-cred">Lead clinician across all 6 surgeries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testi">
+  <div class="testi-inner rv">
+    <div>
+      <div class="testi-quote">"Professional care with a genuine commitment to patients. The standard never drops — and the team genuinely care about the people they look after. I've been coming here for over twenty years."</div>
+      <div class="testi-author">Sheffield S13 — Long-standing patient</div>
+    </div>
+    <div class="testi-stats">
+      <div class="ts"><div class="ts-num">60+</div><div class="ts-label">Years serving Sheffield</div></div>
+      <div class="ts-div"></div>
+      <div class="ts"><div class="ts-num">10+</div><div class="ts-label">Years BDA accredited</div></div>
+      <div class="ts-div"></div>
+      <div class="ts"><div class="ts-num">2</div><div class="ts-label">Foundation Trainers</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section class="team section" id="team">
+  <div class="section-inner">
+    <div class="team-header rv">
+      <div>
+        <div class="section-label">The clinical team</div>
+        <h2>Eight dentists. <em>One standard.</em></h2>
+      </div>
+      <p class="team-intro">An experienced team including two NHS Foundation Trainers — trusted to develop the next generation of Sheffield dentists in an environment of exceptional clinical quality.</p>
+    </div>
+    <div class="team-grid rv">
+      <div class="team-card">
+        <div class="tc-initials">CB</div>
+        <div class="tc-name">Caroline Borthwick BDS</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 74710 · Sheffield, 1998</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">EH</div>
+        <div class="tc-name">Elaine Holme BDS</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 74730 · Sheffield, 1998</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">JR</div>
+        <div class="tc-name">Jennie Ross BDS MSc</div>
+        <div class="tc-role">Associate & Foundation Trainer</div>
+        <div class="tc-gdc">GDC: 193912 · Sheffield, 2010</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">TO</div>
+        <div class="tc-name">Tamsin Offen BDS</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 309231 · Sheffield, 2023</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">MR</div>
+        <div class="tc-name">Moises Rilo Sierra</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 191174 · Seville, 2009</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">CT</div>
+        <div class="tc-name">Carla Tomlinson BDS</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 309471 · Sheffield, 2023</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-initials">AA</div>
+        <div class="tc-name">Aamna Ahmad BDS</div>
+        <div class="tc-role">Associate Dentist</div>
+        <div class="tc-gdc">GDC: 327106 · Sheffield, 2025</div>
+      </div>
+    </div>
+    <div class="support-strip rv">
+      <div class="ss-item"><div class="ss-role">Dental Therapist</div><div class="ss-name">Laura Flynn</div><div class="ss-gdc">GDC 201987</div></div>
+      <div class="ss-item"><div class="ss-role">Practice Manager</div><div class="ss-name">Kirstie Ekwubiri</div><div class="ss-gdc">GDC 122387</div></div>
+      <div class="ss-item"><div class="ss-role">Receptionist</div><div class="ss-name">Jane Hollis</div><div class="ss-gdc">&nbsp;</div></div>
+      <div class="ss-item"><div class="ss-role">Receptionist</div><div class="ss-name">Jill Heffren</div><div class="ss-gdc">&nbsp;</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees section" id="fees">
+  <div class="section-inner">
+    <div class="fees-header rv">
+      <div>
+        <div class="section-label">Our fees</div>
+        <h2>Transparent pricing.<br><em>No surprises.</em></h2>
+      </div>
+      <p class="fees-intro">NHS charges are fixed nationally. All private costs are confirmed in writing before any treatment begins — you will never be charged more than agreed.</p>
+    </div>
+    <div class="fees-cols rv">
+      <div class="fees-col">
+        <div class="fees-col-title">NHS Charges — April 2026</div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Band 1</div><div class="fee-desc">Examination, advice, scale & polish if needed</div></div><div class="fee-price gold">£27.90</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Band 2</div><div class="fee-desc">Band 1 plus fillings, extractions, root canal</div></div><div class="fee-price gold">£76.60</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Band 3</div><div class="fee-desc">Bands 1 & 2 plus crowns, dentures, bridges</div></div><div class="fee-price gold">£332.10</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Under 18</div><div class="fee-desc">All NHS dental treatment</div></div><div class="fee-price gold">Free</div></div>
+        <p class="fee-note">Patients on qualifying benefits, pregnant women, and new mothers are treated free of charge on the NHS.</p>
+      </div>
+      <div class="fees-col">
+        <div class="fees-col-title">Private Treatments</div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Examination</div><div class="fee-desc">Comprehensive private assessment</div></div><div class="fee-price">From £60</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Teeth Whitening</div><div class="fee-desc">Professional take-home trays</div></div><div class="fee-price">From £350</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Smilelign Aligners</div><div class="fee-desc">Clear orthodontics, fully in-house</div></div><div class="fee-price">From £1,800</div></div>
+        <div class="fee-row"><div class="fee-left"><div class="fee-name">Air Polishing</div><div class="fee-desc">Modern professional cleaning</div></div><div class="fee-price">On request</div></div>
+        <p class="fee-note">All private treatment costs confirmed in writing before any work begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="section-inner">
+    <div class="contact-header rv">
+      <div class="section-label">Get in touch</div>
+      <h2>Book your appointment.</h2>
+    </div>
+    <div class="contact-grid rv">
+      <form onsubmit="return false">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First name</label><input type="text" class="form-input" placeholder="Jane"></div>
+          <div class="form-group"><label class="form-label">Last name</label><input type="text" class="form-input" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email address</label><input type="email" class="form-input" placeholder="jane@example.com"></div>
+        <div class="form-group"><label class="form-label">Phone number</label><input type="tel" class="form-input" placeholder="0114 XXX XXXX"></div>
+        <div class="form-group"><label class="form-label">How can we help?</label><textarea class="form-input" placeholder="NHS or private? A specific treatment? Tell us what you need."></textarea></div>
+        <div class="form-submit-wrap">
+          <button type="submit" class="circ-btn dark">
+            <span class="circ-btn-icon">→</span>
+            Send message
+          </button>
+        </div>
+      </form>
+      <div>
+        <div class="cinfo-title">Find us in<br>Sheffield S13.</div>
+        <div class="cinfo-row"><div class="cinfo-label">Address</div><div class="cinfo-val">427–429 Richmond Road, Sheffield, S13 8LU</div></div>
+        <div class="cinfo-row"><div class="cinfo-label">Telephone</div><div class="cinfo-val"><a href="tel:01142399296">0114 239 9296</a></div></div>
+        <div class="cinfo-row"><div class="cinfo-label">Email</div><div class="cinfo-val"><a href="mailto:richmonddentalcare@gmail.com">richmonddentalcare@gmail.com</a></div></div>
+        <div class="cinfo-row"><div class="cinfo-label">Opening hours</div><div class="cinfo-val">Mon–Thu 8:30am–5:15pm · Fri 8:30am–5pm</div></div>
+        <div class="emerg-block">
+          <div class="emerg-title">Same-day emergencies</div>
+          <div class="emerg-text">Call <strong>0114 239 9296</strong> first thing in the morning. We keep slots for registered patients in pain — the earlier you call, the better your chance of being seen that day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Richmond Dental Care</span>
+  <p>© 2026 · 427–429 Richmond Road, Sheffield S13 8LU · GDC Registered · CQC Regulated</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Complaints</a>
+    <a href="#">Accessibility</a>
+    <a href="#">↑ Top</a>
+  </div>
+  <div class="footer-concept">Concept design by <a href="https://claritystudios.uk">Clarity Studios</a> · claritystudios.uk</div>
+</footer>
+
+<script>
+const prog = document.getElementById('prog');
+window.addEventListener('scroll',()=>{
+  prog.style.transform=`scaleX(${window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)})`;
+},{passive:true});
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50),{passive:true});
+
+const obs = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
